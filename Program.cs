@@ -30,5 +30,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.MapGet("/", () => Results.Ok(" API de Firebase funcionando correctamente"));
 
 app.Run();

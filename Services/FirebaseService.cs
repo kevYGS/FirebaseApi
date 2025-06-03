@@ -13,7 +13,8 @@ public class FirebaseService
     {
         _logger = logger;
 
-        var credJson = config["Firebase:CredentialPath"];
+        var credJson = config["FIREBASE_CREDENTIAL_JSON"];
+
         var projectId = config["Firebase:ProjectId"];
 
         if (string.IsNullOrWhiteSpace(credJson) || string.IsNullOrWhiteSpace(projectId))
