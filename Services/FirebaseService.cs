@@ -13,7 +13,7 @@ public class FirebaseService
     {
         _logger = logger;
 
-        var credJson = config["FIREBASE_CREDENTIAL_JSON"];
+        var credJson = config["Clave.json"];
 
         var projectId = config["Firebase__ProjectId"];
 
