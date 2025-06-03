@@ -32,7 +32,6 @@ C:\Users\kevin\source\repos\FirebaseApi\obj\Debug\net9.0\FirebaseApi.pdb
 C:\Users\kevin\source\repos\FirebaseApi\obj\Debug\net9.0\FirebaseApi.genruntimeconfig.cache
 C:\Users\kevin\source\repos\FirebaseApi\obj\Debug\net9.0\ref\FirebaseApi.dll
 C:\Users\kevin\source\repos\FirebaseApi\obj\Debug\net9.0\FirebaseApi.sourcelink.json
-C:\Users\kevin\source\repos\FirebaseApi\bin\Debug\net9.0\clave.json
 C:\Users\kevin\source\repos\FirebaseApi\bin\Debug\net9.0\Google.Api.CommonProtos.dll
 C:\Users\kevin\source\repos\FirebaseApi\bin\Debug\net9.0\Google.Api.Gax.dll
 C:\Users\kevin\source\repos\FirebaseApi\bin\Debug\net9.0\Google.Api.Gax.Grpc.dll

@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers",
-    "\\Models",
+    "\\bin",
     "\\Services"
   ],
   "SelectedNode": "\\FirebaseApi.csproj",
