@@ -15,7 +15,7 @@ public class FirebaseService
 
         var credJson = config["FIREBASE_CREDENTIAL_JSON"];
 
-        var projectId = config["Firebase:ProjectId"];
+        var projectId = config["Firebase__ProjectId"];
 
         if (string.IsNullOrWhiteSpace(credJson) || string.IsNullOrWhiteSpace(projectId))
         {
