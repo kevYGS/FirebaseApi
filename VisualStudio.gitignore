@@ -1,0 +1,15 @@
+# Archivos de compilación
+bin/
+obj/
+.vs/
+
+# Archivos de configuración sensibles
+clave.json
+appsettings.Development.json
+
+# Otros innecesarios
+*.user
+*.suo
+*.pdb
+*.dll
+*.exe
