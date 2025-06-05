@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers"
+    "\\Controllers",
+    "\\Models",
+    "\\Services"
   ],
-  "SelectedNode": "\\appsettings.json",
+  "SelectedNode": "\\FirebaseApi.csproj",
   "PreviewInSolutionExplorer": false
 }

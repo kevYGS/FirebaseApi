@@ -13,19 +13,15 @@ public class FirebaseService
     {
         _logger = logger;
 
-        var credJson = config["Clave.json"];
-
         var projectId = config["Firebase__ProjectId"];
+        var credPath = "/etc/secrets/Clave.json"; 
 
-        if (string.IsNullOrWhiteSpace(credJson) || string.IsNullOrWhiteSpace(projectId))
+        if (string.IsNullOrWhiteSpace(projectId))
         {
-            throw new ArgumentException("Credenciales o ID de proyecto no válidos.");
+            throw new ArgumentException("ProjectId de Firebase no configurado.");
         }
 
-        var tempPath = Path.Combine(Path.GetTempPath(), "firebase-creds.json");
-        File.WriteAllText(tempPath, credJson);
-
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", tempPath);
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credPath);
         _db = FirestoreDb.Create(projectId);
     }
 
