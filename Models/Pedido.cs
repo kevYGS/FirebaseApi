@@ -1,4 +1,4 @@
-﻿
+﻿namespace FirebaseApi.Models
 public class Pedido
 {
     public string Id { get; set; } = string.Empty; 
