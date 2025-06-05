@@ -13,12 +13,17 @@ public class FirebaseService
     {
         _logger = logger;
 
-        var projectId = config["Firebase__ProjectId"];
-        var credPath = "/etc/secrets/Clave.json"; 
+        var projectId = config["Firebase:ProjectId"];
+        var credPath = config["Firebase:CredentialPath"] ?? "/etc/secrets/Clave.json";
 
         if (string.IsNullOrWhiteSpace(projectId))
         {
             throw new ArgumentException("ProjectId de Firebase no configurado.");
+        }
+
+        if (!File.Exists(credPath))
+        {
+            throw new FileNotFoundException($"No se encontró el archivo de credenciales en: {credPath}");
         }
 
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credPath);
