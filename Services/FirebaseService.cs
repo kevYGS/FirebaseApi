@@ -37,7 +37,7 @@ namespace FirebaseApi.Services
             _db = FirestoreDb.Create(projectId);
         }
 
-        // Método para obtener userId (UID) por email usando Firebase Admin SDK
+       
         public async Task<string> ObtenerUserIdPorEmail(string email)
         {
             try
