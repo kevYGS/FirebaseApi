@@ -2,77 +2,75 @@
 using FirebaseApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace FirebaseApi.Controllers;
-
-public class ResumenPedidosDto
+namespace FirebaseApi.Controllers
 {
-    public string Usuario { get; set; }
-    public int TotalPedidos { get; set; }
-    public int CantidadTotal { get; set; }
-    public double TotalGanado { get; set; }
-    public int Dias { get; set; }
-    public int Personas { get; set; }
-    public double RepartoPorPersona { get; set; }
-}
-
-[ApiController]
-[Route("api/[controller]")]
-public class PedidosController : ControllerBase
-{
-    private readonly FirebaseService _firebaseService;
-
-    public PedidosController(FirebaseService firebaseService)
+    public class ResumenPedidosDto
     {
-        _firebaseService = firebaseService;
+        public string Usuario { get; set; }
+        public int TotalPedidos { get; set; }
+        public int CantidadTotal { get; set; }
+        public double TotalGanado { get; set; }
+        public int Dias { get; set; }
+        public int Personas { get; set; }
+        public double RepartoPorPersona { get; set; }
     }
 
-    [HttpGet("resumen")]
-    public async Task<IActionResult> ObtenerResumen(
-        [FromQuery, Required, EmailAddress] string email,
-        [FromQuery] int dias = 1,
-        [FromQuery] int personas = 1)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class PedidosController : ControllerBase
     {
-        if (!ModelState.IsValid)
+        private readonly FirebaseService _firebaseService;
+
+        public PedidosController(FirebaseService firebaseService)
         {
-            return BadRequest(ModelState);
+            _firebaseService = firebaseService;
         }
 
-        if (dias <= 0)
-            dias = 1;
-        if (personas <= 0)
-            personas = 1;
-
-        try
+        [HttpGet("resumen")]
+        public async Task<IActionResult> ObtenerResumen(
+            [FromQuery, Required] string userId,
+            [FromQuery] int dias = 1,
+            [FromQuery] int personas = 1)
         {
-            var pedidos = await _firebaseService.ObtenerPedidosPorUsuario(email);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (pedidos == null || pedidos.Count == 0)
+            if (dias <= 0)
+                dias = 1;
+            if (personas <= 0)
+                personas = 1;
+
+            try
             {
-                return NotFound(new { mensaje = "No se encontraron pedidos para este usuario." });
+                var pedidos = await _firebaseService.ObtenerPedidosPorUsuario(userId);
+
+                if (pedidos == null || pedidos.Count == 0)
+                    return NotFound(new { mensaje = "No se encontraron pedidos para este usuario." });
+
+                double totalGanado = pedidos.Sum(p => p.PrecioTotal) * dias;
+                int totalCantidad = pedidos.Sum(p => p.Cantidad);
+                double porPersona = totalGanado / personas;
+
+                var resumen = new ResumenPedidosDto
+                {
+                    Usuario = userId,
+                    TotalPedidos = pedidos.Count,
+                    CantidadTotal = totalCantidad,
+                    TotalGanado = Math.Round(totalGanado, 2),
+                    Dias = dias,
+                    Personas = personas,
+                    RepartoPorPersona = Math.Round(porPersona, 2)
+                };
+
+                return Ok(resumen);
             }
-
-            double totalGanado = pedidos.Sum(p => p.PrecioTotal) * dias;
-            int totalCantidad = pedidos.Sum(p => p.Cantidad);
-            double porPersona = totalGanado / personas;
-
-            var resumen = new ResumenPedidosDto
+            catch (System.Exception ex)
             {
-                Usuario = email,
-                TotalPedidos = pedidos.Count,
-                CantidadTotal = totalCantidad,
-                TotalGanado = Math.Round(totalGanado, 2),
-                Dias = dias,
-                Personas = personas,
-                RepartoPorPersona = Math.Round(porPersona, 2)
-            };
-
-            return Ok(resumen);
-        }
-        catch (Exception ex)
-        {
-           
-            return StatusCode(500, new { mensaje = "Error interno en el servidor", detalle = ex.Message });
+                return StatusCode(500, new { mensaje = "Error interno en el servidor", detalle = ex.Message });
+            }
         }
     }
 }
