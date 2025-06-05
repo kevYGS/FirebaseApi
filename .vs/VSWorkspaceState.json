@@ -5,6 +5,6 @@
     "\\Models",
     "\\Services"
   ],
-  "SelectedNode": "\\Dockerfile",
+  "SelectedNode": "\\Controllers\\PedidosController.cs",
   "PreviewInSolutionExplorer": false
 }

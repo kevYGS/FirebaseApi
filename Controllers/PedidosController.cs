@@ -9,7 +9,7 @@ namespace FirebaseApi.Controllers
 {
     public class ResumenPedidosDto
     {
-        public string Usuario { get; set; }
+        public string Usuario { get; set; } = string.Empty; 
         public int TotalPedidos { get; set; }
         public int CantidadTotal { get; set; }
         public double TotalGanado { get; set; }
@@ -17,6 +17,7 @@ namespace FirebaseApi.Controllers
         public int Personas { get; set; }
         public double RepartoPorPersona { get; set; }
     }
+
 
     [ApiController]
     [Route("api/[controller]")]
