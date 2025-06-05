@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Services\\FirebaseService.cs",
               "ToolTip": "C:\\Users\\kevin\\source\\repos\\FirebaseApi\\Services\\FirebaseService.cs",
               "RelativeToolTip": "Services\\FirebaseService.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAqwDwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T06:02:21.591Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "Models\\Pedido.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T06:01:55.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T06:01:55.676Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "Controllers\\PedidosController.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T06:01:26.746Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T06:01:26.746Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-03T18:29:44.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T18:29:44.241Z"
             }
           ]
         }

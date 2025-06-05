@@ -26,12 +26,24 @@ public class FirebaseService
             throw new FileNotFoundException($"No se encontró el archivo de credenciales en: {credPath}");
         }
 
-        // Leer contenido parcial para logging (máximo 100 caracteres)
-        var contenido = File.ReadAllText(credPath);
-        _logger.LogInformation("Contenido parcial credenciales: {Contenido}",
-            contenido.Length > 100 ? contenido.Substring(0, 100) + "..." : contenido);
+        // Leer contenido original del archivo
+        var contenidoOriginal = File.ReadAllText(credPath);
 
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credPath);
+        // Revisar si contiene \n literales y reemplazarlos por saltos de línea reales
+        var contenidoCorregido = contenidoOriginal.Replace("\\n", "\n");
+
+        // Guardar contenido corregido en un archivo temporal
+        var tempPath = "/tmp/firebase_key_corrected.json";
+        File.WriteAllText(tempPath, contenidoCorregido);
+
+        // Loguear contenido parcial para debug
+        _logger.LogInformation("Contenido parcial credenciales corregidas: {Contenido}",
+            contenidoCorregido.Length > 100 ? contenidoCorregido.Substring(0, 100) + "..." : contenidoCorregido);
+
+        // Establecer variable de entorno para la ruta del archivo corregido
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", tempPath);
+
+        // Crear instancia FirestoreDb con projectId
         _db = FirestoreDb.Create(projectId);
     }
 
