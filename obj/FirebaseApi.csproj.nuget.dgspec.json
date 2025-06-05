@@ -51,6 +51,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Google.Cloud.Firestore": {
               "target": "Package",
               "version": "[3.10.0, )"
