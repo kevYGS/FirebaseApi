@@ -3,7 +3,6 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddControllers();
@@ -18,15 +17,11 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Firebase API v1");
-    });
-}
-
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Firebase API v1");
+});
 
 app.UseAuthorization();
 app.MapControllers();
