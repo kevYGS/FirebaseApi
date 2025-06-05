@@ -26,6 +26,11 @@ public class FirebaseService
             throw new FileNotFoundException($"No se encontró el archivo de credenciales en: {credPath}");
         }
 
+        // Leer contenido parcial para logging (máximo 100 caracteres)
+        var contenido = File.ReadAllText(credPath);
+        _logger.LogInformation("Contenido parcial credenciales: {Contenido}",
+            contenido.Length > 100 ? contenido.Substring(0, 100) + "..." : contenido);
+
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credPath);
         _db = FirestoreDb.Create(projectId);
     }
