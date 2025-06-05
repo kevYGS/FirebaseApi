@@ -27,7 +27,7 @@ namespace FirebaseApi.Services
                 throw new FileNotFoundException($"No se encontró el archivo de credenciales en: {credPath}");
             }
 
-            // Arreglar contenido de credenciales para evitar problemas con saltos de línea
+            
             var contenidoOriginal = File.ReadAllText(credPath);
             var contenidoCorregido = contenidoOriginal.Replace("\\n", "\n");
             var tempPath = "/tmp/firebase_key_corrected.json";

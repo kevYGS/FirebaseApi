@@ -7,22 +7,22 @@ namespace FirebaseApi.Models
     {
         public string Id { get; set; } = string.Empty;
 
-        [FirestoreProperty]
-        public string tipoPollo { get; set; } = string.Empty;
+        [FirestoreProperty("tipoPollo")]
+        public string TipoPollo { get; set; } = string.Empty;
 
-        [FirestoreProperty]
-        public string acompañamientos { get; set; } = string.Empty;
+        [FirestoreProperty("acompañamientos")]
+        public string Acompañamientos { get; set; } = string.Empty;
 
-        [FirestoreProperty]
-        public int cantidad { get; set; }
+        [FirestoreProperty("cantidad")]
+        public int Cantidad { get; set; }
 
-        [FirestoreProperty]
-        public double precioTotal { get; set; }
+        [FirestoreProperty("precioTotal")]
+        public double PrecioTotal { get; set; }
 
-        [FirestoreProperty]
+        [FirestoreProperty("UsuarioEmail")]
         public string UsuarioEmail { get; set; } = string.Empty;
 
-        [FirestoreProperty]
-        public string detalle { get; set; } = string.Empty;
+        [FirestoreProperty("detalle")]
+        public string Detalle { get; set; } = string.Empty;
     }
 }
